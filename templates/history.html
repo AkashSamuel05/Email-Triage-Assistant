@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>📜 Email History</h1>
+
+<div id="historyContainer"></div>
+
+<script>
+
+function loadHistory() {
+
+    let history = JSON.parse(localStorage.getItem("mailHistory")) || [];
+
+    let container = document.getElementById("historyContainer");
+
+    if(history.length === 0){
+        container.innerHTML = "<p>No emails opened yet.</p>";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    history.forEach(mail => {
+        container.innerHTML += `
+            <div class="email-card">
+                ${mail}
+            </div>
+        `;
+    });
+}
+
+loadHistory();
+
+</script>
+
+{% endblock %}

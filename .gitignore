@@ -1,0 +1,9 @@
+# Google Auth secrets (DO NOT PUSH THESE)
+credentials.json
+token.json
+
+# Python / Environment files
+__pycache__/
+venv/
+.env
+.DS_Store

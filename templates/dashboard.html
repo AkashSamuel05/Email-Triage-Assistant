@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="page-title">📊 Dashboard Overview</h1>
+
+<!-- STAT CARDS -->
+<div class="stats-grid">
+
+    <div class="stat-card blue">
+        <h3>Total Emails</h3>
+        <p>{{ stats.total }}</p>
+    </div>
+
+    <div class="stat-card red">
+        <h3>Urgent</h3>
+        <p id="urgentCount">0</p>
+    </div>
+
+    <div class="stat-card green">
+        <h3>Normal</h3>
+        <p id="normalCount">0</p>
+    </div>
+
+    <div class="stat-card yellow">
+        <h3>Spam</h3>
+        <p id="spamCount">0</p>
+    </div>
+
+</div>
+
+<!-- ACTION BAR -->
+<div class="action-bar">
+    <input type="text" id="searchBox" placeholder="🔍 Search emails...">
+    <button onclick="location.reload()">🔄 Refresh</button>
+</div>
+
+<!-- EMAIL TABLE -->
+<div class="table-container">
+
+<table class="email-table">
+
+<thead>
+<tr>
+<th>Email Content</th>
+<th>Priority</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="emailTable">
+
+{% if emails and emails != ["Unable to fetch emails"] %}
+
+{% for email in emails %}
+<tr class="email-row">
+<td class="email-text">{{ email }}</td>
+
+<td>
+<span class="priority-badge auto-detect">
+Auto
+</span>
+</td>
+
+<td>
+<span class="status-badge">Active</span>
+</td>
+</tr>
+
+<div class="email-card" onclick="saveToHistory('{{ email }}')">
+    {{ email }}
+</div>
+{% endfor %}
+
+{% else %}
+<tr>
+<td colspan="3" class="error">❌ Unable to fetch Gmail — Check API connection</td>
+</tr>
+{% endif %}
+
+
+
+</tbody>
+
+</table>
+</div>
+
+
+
+{% endblock %}
+
+{% for email in emails %}
+<a href="/view/{{ loop.index0 }}" class="email-card">
+    {{ email }}
+</a>
+{% endfor %}

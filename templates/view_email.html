@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>📩 Email Details</h2>
+
+<div class="card">
+    <p><b>Email:</b> {{ result.content }}</p>
+    <p><b>Category:</b> {{ result.category }}</p>
+    <p><b>Priority:</b> {{ result.priority }}</p>
+    <p><b>Summary:</b> {{ result.summary }}</p>
+    <p><b>Draft Reply:</b> {{ result.draft }}</p>
+    <p><b>Meeting:</b> {{ result.meeting }}</p>
+    <p><b>Followup:</b> {{ result.followup }}</p>
+    <p><b>Folder:</b> {{ result.folder }}</p>
+</div>
+
+<a href="/" class="btn">⬅ Back</a>
+
+{% endblock %}

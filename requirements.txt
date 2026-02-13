@@ -1,0 +1,6 @@
+flask
+scikit-learn
+spacy
+pandas
+nltk
+transformers

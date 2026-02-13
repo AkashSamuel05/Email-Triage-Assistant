@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Mail Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="loader" class="loader"></div>
+
+<div class="sidebar">
+    <h2>📧 AI Mail</h2>
+
+    <a href="/">🏠 Dashboard</a>
+    <a href="/analyze">🧠 Analyze Email</a>
+    <a href="/history">📜 History</a>
+    <a href="/about">ℹ About</a>
+
+    <button id="darkToggle">🌙 Dark Mode</button>
+</div>
+
+<div class="main">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Email Preview Modal -->
+<div id="emailModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal">&times;</span>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

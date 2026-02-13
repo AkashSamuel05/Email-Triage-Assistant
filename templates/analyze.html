@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>🧠 Analyze Email</h1>
+<h3> You can custumize your Text Box size by darging the edge of the box.</h3>
+<form method="POST" class="analyze-form">
+<textarea name="email_text" placeholder="Paste email here..." required></textarea>
+<button type="submit">Analyze</button>
+</form>
+
+{% if results %}
+<div class="result-box">
+<h3>Analysis Result</h3>
+
+<p><b>Email:</b> {{ results.content }}</p>
+<p><b>Category:</b> {{ results.category }}</p>
+<p><b>Priority:</b> {{ results.priority }}</p>
+<p><b>Summary:</b> {{ results.summary }}</p>
+<p><b>Draft Reply:</b> {{ results.draft }}</p>
+<p><b>Meeting:</b> {{ results.meeting }}</p>
+<p><b>Followup:</b> {{ results.followup }}</p>
+<p><b>Folder:</b> {{ results.folder }}</p>
+
+</div>
+{% endif %}
+
+{% endblock %}
